@@ -7,7 +7,7 @@
 int main()
 {
     int n;
-    double p, x, sin = 0, term = 0;
+    double p, x, sin = 0;
 
     printf("Enter the angle in series: ");
     scanf("%lf", &x);
@@ -19,21 +19,16 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        p = (2.0 * i) - 1;
-        term = pow(-1.0, (double)i);
-        for (int j = 1; j <= p; j++)
-        {
-            term *= x;
-        }
+        p = (2 * i) + 1;
         int fact = 1;
         for (int j = 1; j <= p; j++)
         {
-            fact *= i;
+            fact *= j;
         }
-        sin += (term / fact);
+        sin += (pow(-1, i) * pow(x, p)) / (fact);
     }
 
-    printf("The number is: %.2f \n", sin);
+    printf("The number is: %f \n", sin);
 
     return 0;
 }
