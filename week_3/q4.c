@@ -5,7 +5,7 @@
 
 int main() {
 
-  int input, rem, nop = 0, noc = 0;
+  int input, nop = 0, noc = 0;
 
   do {
     printf("Enter a number to read (enter -1 to exit): ");
@@ -21,23 +21,18 @@ int main() {
     else if (input < 2)
     {
         printf("This is neither a prime nor a composite number\n");
-        nop = nop + 0;
-        noc = noc + 0;
-    }
-    else if (input == 2 || input == 3) {
-        printf("This is a prime number\n");
-        nop = nop + 1;
     }
     else {
-      for (int i = 2; i <= sqrt(input); i++) {
-        rem = input % i;
-        if (rem == 0) {
+      int prime = 1;
+      for (int i = 2; i < input; i++) {
+        if (input % i == 0) {
             printf("This is a composite number\n");
-          noc = noc + 1;
+            prime = 0;
+            noc = noc + 1;
           break;
         }
       }
-      if (rem != 0) {
+      if (prime == 1) {
         printf("This is a prime number\n");
         nop = nop + 1;
       }
