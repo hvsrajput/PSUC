@@ -1,57 +1,28 @@
-// Sparse Matrix
+//words in a sentence
 
 #include <stdio.h>
 #include <math.h>
 
 int main()
 {
-    int a[100][100], m, n;
+    const int MAX = 100;
+    char a[MAX];
 
-    printf("Enter value for number of rows: ");
-    scanf("%d", &m);
-    printf("Enter value for number of columns: ");
-    scanf("%d", &n);
+    printf("Enter a string: ");
+    gets(a);
 
-    // Input a matrix
-    for (int i = 0; i < m; i++)
+    int count = 0, i = 0, words = 0;
+    for(int i = 0; a[i] != '\0'; i++)
     {
-        printf("Enter value for row %d: ", i+1);
-        for (int j = 0; j < n; j++)
+        count++;
+        if (a[i] == ' ' && a[i+1] != ' ')
         {
-            scanf("%d", &a[i][j]);
-        }  
-    }
-
-    // Display the matrix
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d\t", a[i][j]);
+            words++;
         }
-        printf("\n");
     }
+    printf("The number of letters are: %d\n", count);
+    printf("The number of words are: %d\n", words+1);
 
-    // Check for Sparse matrix
-    int count = 0;
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            if (a[i][j] == 0)
-            {
-                count++;
-            }
-        }  
-    }
-    if (count > ((m*n)-count))
-    {
-        printf("The matrix is a sparse matrix\n");
-    }
-    else
-    {
-        printf("The matrix is not a sparse matrix\n");
-    }
-
+    end:
     return 0;
 }

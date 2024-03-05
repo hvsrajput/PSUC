@@ -1,66 +1,36 @@
-// Determinant of matrix
+//if string is palindrome or not
 
 #include <stdio.h>
 #include <math.h>
 
 int main()
 {
-    int a[100][100], m, n;
+    char a[100];
+    int b, palin = 1;
 
-    printf("Enter value for number of rows: ");
-    scanf("%d", &m);
-    printf("Enter value for number of columns: ");
-    scanf("%d", &n);
+    printf("Enter a string: ");
+    gets(a);
+    printf("The string is: ");
+    puts(a);
 
-    // Not  a square matrix
-    if (m != n)
+    b = strlen(a);
+
+    for(int i = 0; i <= b/2; i++)
     {
-        printf("Not a square matrix\n");
-        goto end;
-    }
-
-    // Input a matrix
-    for (int i = 0; i < m; i++)
-    {
-        printf("Enter value for row %d: ", i + 1);
-        for (int j = 0; j < n; j++)
+        if(a[i] != a[b-i-1])
         {
-            scanf("%d", &a[i][j]);
+            palin = 0;
         }
     }
 
-    // Display the matrix
-    for (int i = 0; i < m; i++)
+    if(palin == 0)
     {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d\t", a[i][j]);
-        }
-        printf("\n");
+        printf("The string is not a palindrome\n");
+    }
+    else
+    {
+        printf("The string is a palindrome\n");
     }
 
-    // Determinant of matrix
-    int order, minor = 0, b[100], determinant = 0;
-    order = m;
-    for (int i = 0, j = 0; j < n; j++)
-    {
-        // element select hua let a00 hua select
-        // ek order chhota matrix banaya
-        for (int k = 0; k < m; k++)
-        {
-            
-        }
-    }
-
-    for (int i = 0; i < m-1; i++)
-    {
-        for (int j = 0; j < n-1; j++)
-        {
-            printf("%d\t", b[i]);
-        }
-        printf("\n");
-    }
-
-end:
     return 0;
 }

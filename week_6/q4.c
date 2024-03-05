@@ -1,5 +1,4 @@
-//Harshvardhan Singh_week 6_q4.c
-//interchanging primary and secondary elements of matrix
+//interchanging primary and secondary diagonal of matrix
 
 #include<stdio.h>
 #include<math.h>
@@ -19,6 +18,7 @@ int main()
         end(0);
     }
 
+    // get elements of matrix
     printf("Enter the elements of matrix: \n");
     for(int i = 0; i < n; i++)
     {
@@ -28,6 +28,7 @@ int main()
         }
     }
 
+    // print original matrix
     printf("The matrix is: \n");
     for(int i = 0; i < n; i++)
     {
@@ -38,16 +39,21 @@ int main()
         printf("\n");
     }
 
+    // Interchanging primary and secondary diagonal
      for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < i+1; j++)
+        for(int j = 0; j < n; j++)
         {
-            temp = a[i][j];
-            a[i][j] = a[j][i];
-            a[j][i] = temp;
+            if (i == j)
+            {   
+                temp = a[i][j];
+                a[i][j] = a[i][n-i-1];
+                a[i][n-i-1] = temp;
+            }
         }
     }
 
+    // print final matrix
     printf("The interchanged matrix is: \n");
     for(int i = 0; i < n; i++)
     {

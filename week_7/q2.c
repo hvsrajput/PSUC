@@ -1,58 +1,35 @@
-// Sum of triangular elements
+//toggle words in a string
 
 #include <stdio.h>
 #include <math.h>
 
 int main()
 {
-    int a[100][100], m, n;
+    const int MAX = 100;
+    char a[MAX];
+    int c;
 
-    printf("Enter value for number of rows: ");
-    scanf("%d", &m);
-    printf("Enter value for number of columns: ");
-    scanf("%d", &n);
+    printf("Enter a string: ");
+    gets(a);
+    printf("The string is %s\n", a);
 
-    // Input a matrix
-    for (int i = 0; i < m; i++)
+    int count = 0, i = 0, words = 0;
+    for(int i = 0; a[i] != '\0'; i++)
     {
-        printf("Enter value for row %d: ", i+1);
-        for (int j = 0; j < n; j++)
+        if(a[i] >= 'a' && a[i] <= 'z')
         {
-            scanf("%d", &a[i][j]);
-        }  
-    }
-
-    // Display the matrix
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d\t", a[i][j]);
+            c = (int)a[i];
+            c -= 32;
+            a[i] = (char)c;
         }
-        printf("\n");
-    }
-
-    // Calculate lower triangle sum
-    int lower = 0;
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < i; j++)
+        else if(a[i] >= 'A' && a[i] <= 'Z')
         {
-            lower += a[i][j];
+            c = (int)a[i];
+            c += 32;
+            a [i] = (char)c;
         }
     }
-    printf("The sum of the lower triangular elements is: %d\n", lower);
-
-    // Calculate upper triangle sum
-    int upper = 0;
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = i+1; j < n; j++)
-        {
-            upper += a[i][j];
-        }
-    }
-    printf("The sum of the lower triangular elements is: %d\n", upper);
-
+    printf("The string is: ");
+    puts(a);
     return 0;
 }
